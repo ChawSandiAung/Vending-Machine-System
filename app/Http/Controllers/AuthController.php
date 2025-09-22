@@ -40,8 +40,17 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255|regex:/^[a-zA-Z\s]+$/',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|confirmed|min:6|regex:/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};\':"\\|,.<>\/?]).+$/',
+            'password' => [
+                'required',
+                'string',
+                'confirmed',
+                'min:6',
+                'regex:/^(?=.*[A-Z])(?=.*[\W]).+$/', // Safe regex for uppercase + special char
+            ],
+        ], [
+            'password.regex' => 'Password must contain at least one uppercase letter and one special character.',
         ]);
+
 
         $user = User::createUser($request->only(['name', 'email', 'password']));
 
