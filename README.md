@@ -72,10 +72,10 @@ docker compose exec app php artisan migrate --seed
 
 ## Admin user
 
-Email: admin@example.com
+Email: admin@gmail.com
 Password: Test@123
 
 ## Regular user
 
-Email: user@example.com
-Password: password
+Email: user@gmail.com
+Password: User@123

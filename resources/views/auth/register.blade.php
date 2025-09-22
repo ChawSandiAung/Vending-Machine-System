@@ -58,9 +58,6 @@
             @error('password')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
-            <small class="form-text text-muted">
-                Password must be at least 6 characters, include an uppercase letter, and a special character.
-            </small>
         </div>
 
         <div class="mb-3">
