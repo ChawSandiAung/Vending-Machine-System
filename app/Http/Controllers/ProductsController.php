@@ -54,23 +54,11 @@ class ProductsController extends Controller
 
         $quantity = $request->input('quantity');
 
-        if ($quantity > $product->quantity_available) {
-            return back()->withErrors(['quantity' => 'Not enough quantity available.']);
+        try {
+            $product->purchase(Auth::id(), $quantity);
+            return redirect()->route('products.index')->with('success', 'Purchase successful!');
+        } catch (\Exception $e) {
+            return back()->withErrors(['quantity' => $e->getMessage()]);
         }
-
-        $totalPrice = $product->price * $quantity;
-
-        // Create transaction
-        Transaction::create([
-            'user_id' => Auth::id(),
-            'product_id' => $product->id,
-            'quantity' => $quantity,
-            'total_price' => $totalPrice,
-        ]);
-
-        // Update product quantity
-        $product->decrement('quantity_available', $quantity);
-
-        return redirect()->route('products.index')->with('success', 'Purchase successful!');
     }
 }

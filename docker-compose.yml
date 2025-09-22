@@ -3,9 +3,9 @@ version: "3.9"
 services:
   app:
     build:
-      context: ./laravel-app
+      context: ./
       dockerfile: Dockerfile
-    container_name: laravel-app
+    container_name: vending-machine-app
     restart: unless-stopped
     volumes:
       - ./:/var/www

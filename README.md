@@ -17,8 +17,7 @@ A minimal, developer-friendly Docker setup for a Laravel application using **PHP
 ## Repo layout (expected)
 
 
-
-├── vending-machine/ # Laravel project (contains artisan, app/, routes/, etc.)
+├── vending_machine/ # Laravel project (contains artisan, app/, routes/, etc.)
 
 │ ├── Dockerfile
 
