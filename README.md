@@ -32,6 +32,7 @@ A minimal, developer-friendly Docker setup for a Laravel application using PHP-F
 1. Clone the repository
 
 git clone https://github.com/ChawSandiAung/Vending-Machine-System.git
+
 cd vending-machine
 
 Copy environment variables
@@ -42,10 +43,15 @@ cp .env.example .env
 # Example .env database configuration:
 
 DB_CONNECTION=mysql
+
 DB_HOST=db
+
 DB_PORT=3306
+
 DB_DATABASE=vending-machine
+
 DB_USERNAME=laravel
+
 DB_PASSWORD=laravelpassword
 
 # Build and start containers
