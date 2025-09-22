@@ -20,13 +20,20 @@
             <td>{{ $product->quantity_available }}</td>
             <td>
                 @auth
-                    @if($product->quantity_available > 0)
-                        <a href="{{ route('products.purchaseForm', $product) }}" class="btn btn-primary btn-sm">Purchase</a>
-                    @else
-                        <span class="text-muted">Out of stock</span>
-                    @endif
+                @if($product->quantity_available > 0)
+                <a href="{{ route('products.purchaseForm', $product) }}" class="btn btn-primary btn-sm">Purchase</a>
                 @else
-                    <a href="{{ route('login') }}" class="btn btn-secondary btn-sm">Login to Purchase</a>
+                <span class="text-muted">Out Of Stock</span>
+                @endif
+                @if(Auth::user()->isAdmin())
+                <form action="{{ route('products.destroy', $product) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
+                </form>
+                @endif
+                @else
+                <a href="{{ route('login') }}" class="btn btn-secondary btn-sm">Login to Purchase</a>
                 @endauth
             </td>
         </tr>
