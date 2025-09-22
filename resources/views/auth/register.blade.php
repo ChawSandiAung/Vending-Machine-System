@@ -4,17 +4,6 @@
 <div class="container mt-5">
     <h1>Register</h1>
 
-    {{-- Display all errors at the top --}}
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul class="mb-0">
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -58,6 +47,9 @@
             @error('password')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
+            <small class="form-text text-muted">
+                Password must be at least 6 characters, include an uppercase letter, and a special character.
+            </small>
         </div>
 
         <div class="mb-3">
