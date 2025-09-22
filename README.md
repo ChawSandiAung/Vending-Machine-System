@@ -31,7 +31,7 @@ A minimal, developer-friendly Docker setup for a Laravel application using PHP-F
 
 1. Clone the repository
 
-git clone https://github.com/tahs01/vending-machine-system.git
+git clone https://github.com/ChawSandiAung/Vending-Machine-System.git
 cd vending-machine
 
 Copy environment variables
